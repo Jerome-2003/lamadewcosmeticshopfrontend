@@ -1,4 +1,4 @@
-export function OrderSummary() {
+export default function OrderSummary() {
   return (
     <div className="lg:col-span-1">
       <div className="rounded-[2rem] border p-6 glass-card sticky top-24">

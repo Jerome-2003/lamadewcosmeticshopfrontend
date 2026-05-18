@@ -1,4 +1,4 @@
-export function Cart() {
+export default function CartItems() {
   return (
     <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8">
       <div className="lg:col-span-2">

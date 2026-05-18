@@ -1,4 +1,4 @@
-export function Video() {
+export default function Video() {
   return (
     <div className="max-w-7xl mx-auto mb-16">
       <h2 className="font-semibold text-3xl mb-6">Learn Your Routine</h2>

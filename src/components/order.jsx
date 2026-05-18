@@ -1,4 +1,4 @@
-export function Orders() {
+export default function Orders() {
     return (
         <>
         <div class="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8">
