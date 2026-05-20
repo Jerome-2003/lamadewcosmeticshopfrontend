@@ -21,8 +21,13 @@ const ipWhitelist = require('./middleware/ipWhiteList');
 // Public Auth endpoints (login and registration)
 app.use('/api/auth', require('./routes/auth'));
 
-// IP Whitelisted Admin Routes
+// Orders:
+// POST is public — any customer can place an order
+// GET/PATCH are admin-only, protected by IP whitelist
+app.post('/api/orders', require('./routes/orders'));
 app.use('/api/orders', ipWhitelist, require('./routes/orders'));
+
+// Products — public
 app.use('/api/products', require('./routes/products'));
 
 // Health Check

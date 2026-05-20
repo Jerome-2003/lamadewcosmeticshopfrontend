@@ -3,10 +3,8 @@ const path = require('path');
 
 const db = new Database(path.join(__dirname, 'lumadew.db'));
 
-// Enable WAL mode for better performance
 db.pragma('journal_mode = WAL');
 
-// Create tables
 db.exec(`
   CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -18,7 +16,6 @@ db.exec(`
 
   CREATE TABLE IF NOT EXISTS orders (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user_id INTEGER NOT NULL,
     name TEXT NOT NULL,
     email TEXT NOT NULL,
     phone TEXT NOT NULL,
@@ -28,8 +25,7 @@ db.exec(`
     items TEXT NOT NULL,
     total REAL NOT NULL,
     status TEXT DEFAULT 'processing',
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   );
 
   CREATE TABLE IF NOT EXISTS products (
@@ -43,7 +39,6 @@ db.exec(`
   );
 `);
 
-// Seed default products if table is empty
 const productCount = db.prepare('SELECT COUNT(*) as count FROM products').get();
 if (productCount.count === 0) {
   const insertProduct = db.prepare(
