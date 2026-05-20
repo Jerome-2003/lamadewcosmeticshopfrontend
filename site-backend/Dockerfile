@@ -10,11 +10,11 @@ COPY package*.json ./
 # 4. Install dependencies
 RUN npm install
 
-# 5. Copy the rest of your app's source code
+# 5. Copy the rest of your app's source code (Fixed the two-line split here)
 COPY . .
 
-# 6. Expose the port your server listens to
-EXPOSE 5000
+# 6. Expose the port your server actually defaults to (Changed to 3001)
+EXPOSE 3001
 
 # 7. Define the command to run your app
 CMD [ "node", "server.js" ]
