@@ -40,7 +40,7 @@ export default function AdminPage() {
   useEffect(() => {
     const fetchBackendOrders = async () => {
       try {
-        const response = await fetch('http://localhost:3001/api/orders', {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001'}/api/orders`, {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' }
         });
